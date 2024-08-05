@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1500"
+   LastUpgradeVersion = "1540"
    version = "1.7">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -53,6 +53,39 @@
                BlueprintIdentifier = "2FFB643D2AC6D256007F2F80"
                BuildableName = "UserListUITests.xctest"
                BlueprintName = "UserListUITests"
+               ReferencedContainer = "container:UserList.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO"
+            parallelizable = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "573AB4832C60404000F0775E"
+               BuildableName = "ViewModelTests.xctest"
+               BlueprintName = "ViewModelTests"
+               ReferencedContainer = "container:UserList.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO"
+            parallelizable = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "573AB4902C6053B000F0775E"
+               BuildableName = "ViewModelTests2.xctest"
+               BlueprintName = "ViewModelTests2"
+               ReferencedContainer = "container:UserList.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO"
+            parallelizable = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "573AB49D2C60543B00F0775E"
+               BuildableName = "ViewModelTestsX.xctest"
+               BlueprintName = "ViewModelTestsX"
                ReferencedContainer = "container:UserList.xcodeproj">
             </BuildableReference>
          </TestableReference>
