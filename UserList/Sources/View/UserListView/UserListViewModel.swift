@@ -28,6 +28,11 @@ final class UserListViewModel: ObservableObject {
         }
     }
 
+
+    
+}
+
+extension UserListViewModel: UserListVMProtocol {
     // TODO: - Should be an OutPut
      func shouldLoadMoreData(currentItem item: User) -> Bool {
         guard let lastItem = users.last else { return false }
