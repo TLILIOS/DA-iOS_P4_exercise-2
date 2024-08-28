@@ -128,8 +128,6 @@ struct UserListView: View {
             }
         }
     }
-    
-    
 }
 
 struct UserListView_Previews: PreviewProvider {

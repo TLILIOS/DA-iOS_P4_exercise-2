@@ -9,27 +9,24 @@ import XCTest
 
 final class UserListViewModelTests: XCTestCase {
     var viewModel: UserListViewModel!
+    var mockRepository: UserListRepository!
     
     override func setUp() async throws {
         try await super.setUp()
         // Initialize the mock repository and ViewModel before each test
-        let mockRepository = UserListRepository(executeDataRequest: mockExecuteDataRequest)
+        mockRepository = UserListRepository(executeDataRequest: mockExecuteDataRequest)
         viewModel = UserListViewModel(repository: mockRepository)
     }
     override func tearDown() async throws {
         viewModel = nil
+        mockRepository = nil
         try await super.tearDown()
     }
     
     //     Test pour vérifier que les utilisateurs sont correctement chargés
     func testFetchUsersSuccess() async throws {
         // Happy path test case:
-        // Given
-        // Initialisation du mock repository
-        let mockRepository = UserListRepository(executeDataRequest: mockExecuteDataRequest)
-        // Initialisation du ViewModel avec le mock repository
-        let viewModel = UserListViewModel(repository: mockRepository)
-        
+
         // When
         await viewModel.fetchUsers()
         
@@ -46,8 +43,8 @@ final class UserListViewModelTests: XCTestCase {
     // Test for handling fetch error
     func testFetchUsersFailure() async throws {
         // Given
-        let mockRepository = UserListRepository(executeDataRequest: mockExecuteDataRequestFailure(_:))
-        let viewModel = UserListViewModel(repository: mockRepository)
+         mockRepository = UserListRepository(executeDataRequest: mockExecuteDataRequestFailure(_:))
+         viewModel = UserListViewModel(repository: mockRepository)
         
         // When
         await viewModel.fetchUsers()
@@ -61,10 +58,10 @@ final class UserListViewModelTests: XCTestCase {
         // Charger initialement les utilisateurs
         await viewModel.fetchUsers()
         
-        // Quand
+        // When
         await viewModel.reloadUsers()
         
-        // Alors
+        // Then
         XCTAssertEqual(viewModel.users.count, 2)  // Doit être 2 car les mêmes utilisateurs sont chargés à nouveau
         XCTAssertEqual(viewModel.users[0].name.first, "John")
         XCTAssertEqual(viewModel.users[0].name.last, "Doe")
@@ -79,16 +76,16 @@ final class UserListViewModelTests: XCTestCase {
             return
         }
         
-        // Quand
-        let shouldLoadMore = viewModel.shouldLoadMoreData(currentItem: lastUser)
+        // When
+        let shouldLoadMore = await viewModel.shouldLoadMoreData(currentItem: lastUser)
         
-        // Alors
+        // Then
         XCTAssertTrue(shouldLoadMore)
     }
     
     // Mock de la fonction executeDataRequest
     private func mockExecuteDataRequest(_ request: URLRequest) async throws -> (Data, URLResponse) {
-        // Utilisation de la même réponse JSON simulée que dans vos tests de repository
+        // Utilisation de la même réponse JSON simulée que dans les tests de repository
         let sampleJSON = """
             {
                 "results": [
