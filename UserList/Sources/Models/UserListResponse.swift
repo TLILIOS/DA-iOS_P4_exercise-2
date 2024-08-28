@@ -1,6 +1,6 @@
 import Foundation
 
-struct UserListResponse: Codable {
+class UserListResponse: Codable {
     let results: [User]
 
     // MARK: - User

@@ -18,10 +18,8 @@
 		2FFB64282AC6D255007F2F80 /* UserListApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFB64272AC6D255007F2F80 /* UserListApp.swift */; };
 		2FFB642A2AC6D255007F2F80 /* UserListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FFB64292AC6D255007F2F80 /* UserListView.swift */; };
 		2FFB642C2AC6D256007F2F80 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2FFB642B2AC6D256007F2F80 /* Assets.xcassets */; };
-		5738803F2C6147BC00AAA325 /* UserListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573AB47E2C5FF3AF00F0775E /* UserListViewModel.swift */; };
+		572A54552C73C2B100E40B33 /* UserListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572A54542C73C2B100E40B33 /* UserListViewModelTests.swift */; };
 		573AB47F2C5FF3AF00F0775E /* UserListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573AB47E2C5FF3AF00F0775E /* UserListViewModel.swift */; };
-		57A13D5F2C62F5FA00B7FA46 /* UserListVMProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A13D5E2C62F5FA00B7FA46 /* UserListVMProtocol.swift */; };
-		57A13D622C62F8CD00B7FA46 /* MackVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A13D612C62F8CD00B7FA46 /* MackVM.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,9 +47,8 @@
 		2FFB64292AC6D255007F2F80 /* UserListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListView.swift; sourceTree = "<group>"; };
 		2FFB642B2AC6D256007F2F80 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2FFB64342AC6D256007F2F80 /* UserListTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UserListTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		572A54542C73C2B100E40B33 /* UserListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListViewModelTests.swift; sourceTree = "<group>"; };
 		573AB47E2C5FF3AF00F0775E /* UserListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListViewModel.swift; sourceTree = "<group>"; };
-		57A13D5E2C62F5FA00B7FA46 /* UserListVMProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListVMProtocol.swift; sourceTree = "<group>"; };
-		57A13D612C62F8CD00B7FA46 /* MackVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MackVM.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,12 +72,10 @@
 		2FF9D9172ACB3C0B00F3A6C5 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				573AB47C2C5FF30100F0775E /* View */,
 				2FFB64272AC6D255007F2F80 /* UserListApp.swift */,
-				2F804AE12ACC976300A46A03 /* UserDetailView.swift */,
-				2FEF0C702ACB45E3004DB87C /* User.swift */,
-				2FEF0C6E2ACB416C004DB87C /* UserListResponse.swift */,
-				2FF9D91E2ACB3DD400F3A6C5 /* UserListRepository.swift */,
+				57DD6EFA2C7EA99D0011A712 /* Models */,
+				57DD6EFB2C7EAA330011A712 /* Views */,
+				57DD6EFC2C7EAAA00011A712 /* ViewModels */,
 				2FF9D9192ACB3CD800F3A6C5 /* HTTPClient */,
 			);
 			path = Sources;
@@ -134,37 +129,38 @@
 		2FFB64372AC6D256007F2F80 /* UserListTests */ = {
 			isa = PBXGroup;
 			children = (
-				57A13D602C62F88B00B7FA46 /* Macks */,
 				2F015BA72ACC938F009A098C /* UserListRepositoryTests.swift */,
+				572A54542C73C2B100E40B33 /* UserListViewModelTests.swift */,
 				2FB4823B2ACC98DD0016CBA7 /* UserList.xctestplan */,
 			);
 			path = UserListTests;
 			sourceTree = "<group>";
 		};
-		573AB47C2C5FF30100F0775E /* View */ = {
+		57DD6EFA2C7EA99D0011A712 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				573AB47D2C5FF34C00F0775E /* UserListView */,
+				2FEF0C702ACB45E3004DB87C /* User.swift */,
+				2FF9D91E2ACB3DD400F3A6C5 /* UserListRepository.swift */,
+				2FEF0C6E2ACB416C004DB87C /* UserListResponse.swift */,
 			);
-			path = View;
+			path = Models;
 			sourceTree = "<group>";
 		};
-		573AB47D2C5FF34C00F0775E /* UserListView */ = {
+		57DD6EFB2C7EAA330011A712 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				2FFB64292AC6D255007F2F80 /* UserListView.swift */,
+				2F804AE12ACC976300A46A03 /* UserDetailView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		57DD6EFC2C7EAAA00011A712 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
 				573AB47E2C5FF3AF00F0775E /* UserListViewModel.swift */,
-				2FFB64292AC6D255007F2F80 /* UserListView.swift */,
-				57A13D5E2C62F5FA00B7FA46 /* UserListVMProtocol.swift */,
 			);
-			path = UserListView;
-			sourceTree = "<group>";
-		};
-		57A13D602C62F88B00B7FA46 /* Macks */ = {
-			isa = PBXGroup;
-			children = (
-				57A13D612C62F8CD00B7FA46 /* MackVM.swift */,
-			);
-			path = Macks;
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -274,7 +270,6 @@
 				573AB47F2C5FF3AF00F0775E /* UserListViewModel.swift in Sources */,
 				2F804AE22ACC976300A46A03 /* UserDetailView.swift in Sources */,
 				2FF9D91F2ACB3DD400F3A6C5 /* UserListRepository.swift in Sources */,
-				57A13D5F2C62F5FA00B7FA46 /* UserListVMProtocol.swift in Sources */,
 				2FFB64282AC6D255007F2F80 /* UserListApp.swift in Sources */,
 				2FEF0C712ACB45E3004DB87C /* User.swift in Sources */,
 			);
@@ -284,9 +279,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5738803F2C6147BC00AAA325 /* UserListViewModel.swift in Sources */,
+				572A54552C73C2B100E40B33 /* UserListViewModelTests.swift in Sources */,
 				2F015BA82ACC938F009A098C /* UserListRepositoryTests.swift in Sources */,
-				57A13D622C62F8CD00B7FA46 /* MackVM.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

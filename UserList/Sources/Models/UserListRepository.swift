@@ -1,8 +1,8 @@
 import Foundation
 
-struct UserListRepository {
+class UserListRepository {
 
-    private let executeDataRequest: (URLRequest) async throws -> (Data, URLResponse)
+     let executeDataRequest: (URLRequest) async throws -> (Data, URLResponse)
 
     init(
         executeDataRequest: @escaping (URLRequest) async throws -> (Data, URLResponse) = URLSession.shared.data(for:)

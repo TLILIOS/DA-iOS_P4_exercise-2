@@ -1,7 +1,7 @@
 import SwiftUI
-
+import Foundation
 struct UserListView: View {
-    @StateObject private var viewModel = UserListViewModel()
+    @StateObject private var viewModel = UserListViewModel(repository: UserListRepository())
     
     var body: some View {
         NavigationView {
@@ -31,7 +31,10 @@ struct UserListView: View {
                     }
                     .onAppear {
                         if viewModel.shouldLoadMoreData(currentItem: user) {
-                            viewModel.fetchUsers()
+                            Task {
+                                await viewModel.fetchUsers()
+                            }
+                            
                         }
                     }
                 }
@@ -50,7 +53,10 @@ struct UserListView: View {
                     }
                     ToolbarItem(placement: .navigationBarTrailing) {
                         Button(action: {
-                            viewModel.reloadUsers()
+                            Task {
+                                await viewModel.reloadUsers()
+                            }
+                            
                         }) {
                             Image(systemName: "arrow.clockwise")
                                 .imageScale(.large)
@@ -82,7 +88,9 @@ struct UserListView: View {
                             }
                             .onAppear {
                                 if viewModel.shouldLoadMoreData(currentItem: user) {
-                                    viewModel.fetchUsers()
+                                    Task {
+                                        await viewModel.fetchUsers()
+                                    }
                                 }
                             }
                         }
@@ -103,7 +111,9 @@ struct UserListView: View {
                     }
                     ToolbarItem(placement: .navigationBarTrailing) {
                         Button(action: {
-                            viewModel.reloadUsers()
+                            Task {
+                                await viewModel.reloadUsers()
+                            }
                         }) {
                             Image(systemName: "arrow.clockwise")
                                 .imageScale(.large)
@@ -113,7 +123,9 @@ struct UserListView: View {
             }
         }
         .onAppear {
-            viewModel.fetchUsers()
+            Task {
+               await viewModel.fetchUsers()
+            }
         }
     }
 

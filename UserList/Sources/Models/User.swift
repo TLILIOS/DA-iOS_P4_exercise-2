@@ -1,6 +1,10 @@
 import Foundation
 
-struct User: Identifiable {
+struct User: Identifiable, Equatable {
+    static func == (lhs: User, rhs: User) -> Bool {
+        true
+    }
+    
     var id = UUID()
     let name: Name
     let dob: Dob
