@@ -11,16 +11,16 @@ final class UserListViewModelTests: XCTestCase {
     var viewModel: UserListViewModel!
     
     override func setUp() async throws {
-            try await super.setUp()
-            // Initialize the mock repository and ViewModel before each test
-            let mockRepository = UserListRepository(executeDataRequest: mockExecuteDataRequest)
-            viewModel = UserListViewModel(repository: mockRepository)
-        }
+        try await super.setUp()
+        // Initialize the mock repository and ViewModel before each test
+        let mockRepository = UserListRepository(executeDataRequest: mockExecuteDataRequest)
+        viewModel = UserListViewModel(repository: mockRepository)
+    }
     override func tearDown() async throws {
-            viewModel = nil
-            try await super.tearDown()
-        }
-
+        viewModel = nil
+        try await super.tearDown()
+    }
+    
     //     Test pour vérifier que les utilisateurs sont correctement chargés
     func testFetchUsersSuccess() async throws {
         // Happy path test case:
@@ -55,37 +55,36 @@ final class UserListViewModelTests: XCTestCase {
         // Then
         XCTAssertTrue(viewModel.users.isEmpty)
         XCTAssertFalse(viewModel.isLoading)
-        // Optionally, verify the error handling logic if you add an error property to viewModel
     }
     // Test pour vérifier le rechargement des utilisateurs
-        func testReloadUsers() async throws {
-            // Charger initialement les utilisateurs
-            await viewModel.fetchUsers()
-
-            // Quand
-            await viewModel.reloadUsers()
-            
-            // Alors
-            XCTAssertEqual(viewModel.users.count, 2)  // Doit être 2 car les mêmes utilisateurs sont chargés à nouveau
-            XCTAssertEqual(viewModel.users[0].name.first, "John")
-            XCTAssertEqual(viewModel.users[0].name.last, "Doe")
-        }
+    func testReloadUsers() async throws {
+        // Charger initialement les utilisateurs
+        await viewModel.fetchUsers()
+        
+        // Quand
+        await viewModel.reloadUsers()
+        
+        // Alors
+        XCTAssertEqual(viewModel.users.count, 2)  // Doit être 2 car les mêmes utilisateurs sont chargés à nouveau
+        XCTAssertEqual(viewModel.users[0].name.first, "John")
+        XCTAssertEqual(viewModel.users[0].name.last, "Doe")
+    }
     
     func testShouldLoadMoreData() async throws {
-            // Charger initialement les utilisateurs
-            await viewModel.fetchUsers()
-
-            guard let lastUser = viewModel.users.last else {
-                XCTFail("Last user should exist")
-                return
-            }
-
-            // Quand
-            let shouldLoadMore = viewModel.shouldLoadMoreData(currentItem: lastUser)
-
-            // Alors
-            XCTAssertTrue(shouldLoadMore)
+        // Charger initialement les utilisateurs
+        await viewModel.fetchUsers()
+        
+        guard let lastUser = viewModel.users.last else {
+            XCTFail("Last user should exist")
+            return
         }
+        
+        // Quand
+        let shouldLoadMore = viewModel.shouldLoadMoreData(currentItem: lastUser)
+        
+        // Alors
+        XCTAssertTrue(shouldLoadMore)
+    }
     
     // Mock de la fonction executeDataRequest
     private func mockExecuteDataRequest(_ request: URLRequest) async throws -> (Data, URLResponse) {

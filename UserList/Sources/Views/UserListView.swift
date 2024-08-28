@@ -124,12 +124,12 @@ struct UserListView: View {
         }
         .onAppear {
             Task {
-               await viewModel.fetchUsers()
+                await viewModel.fetchUsers()
             }
         }
     }
-
-
+    
+    
 }
 
 struct UserListView_Previews: PreviewProvider {
